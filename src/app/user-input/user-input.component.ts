@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Output, output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { UserInputData } from './user-input.model';
+import { InvetmentInputData } from '../invetment-input.model';
 
 @Component({
   selector: 'app-user-input',
@@ -11,7 +11,8 @@ import { UserInputData } from './user-input.model';
   styleUrl: './user-input.component.css'
 })
 export class UserInputComponent {
-  @Output() userInput = new EventEmitter<UserInputData>();
+  //@Output() userInput = new EventEmitter<UserInputData>();
+  userInput = output<InvetmentInputData>();
   enteredInitialInvestment = '0';
   enteredAnualInvestment = '0';
   enteredExpectedReturn = '0';
