@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { HeaderComponent } from "./header/header.component";
 import { UserInputComponent } from "./user-input/user-input.component";
 import type { InvestmentResult, InvetmentInputData } from './invetment-input.model';
@@ -11,7 +11,7 @@ import { InvetmentResultComponent } from './invetment-result/invetment-result.co
   imports: [HeaderComponent, UserInputComponent, InvetmentResultComponent],
 })
 export class AppComponent {
-  resultsData?: InvestmentResult[]
+  resultsData = signal<InvestmentResult[]| undefined>(undefined) ;
   calculateInvestmentResults(data: InvetmentInputData) {
     const { initialInvestment, annualInvestment, expectedReturn, duration } = data;
 
@@ -34,6 +34,10 @@ export class AppComponent {
       });
     }
     console.log(annualData);
-    this.resultsData = annualData;
+    this.resultsData.set(annualData);
   }
 }
+function siganl<T>() {
+  throw new Error('Function not implemented.');
+}
+
